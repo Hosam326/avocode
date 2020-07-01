@@ -13,14 +13,14 @@ class AdminController extends Controller
         if ($request->isMethod('post')) {
 
             $data = $request->input();
-
             if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 return view('layout');
                 die;
             } else {
+                return view('admin.login');
 
-                echo "failed";
-                die;
+//                echo "failed";
+//                die;
             }
         }
         return view('admin.login');

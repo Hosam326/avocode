@@ -17,7 +17,6 @@ class SliderTable extends Migration
             $table->bigIncrements('id');
             $table->String('title');
             $table->String('image');
-            $table->integer('tag_id');
             $table->rememberToken();
             $table->timestamps();
         });

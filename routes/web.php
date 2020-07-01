@@ -19,16 +19,17 @@ Route::group(['prefix' => 'admin'], function (){
     Route::get('/', function () {
         return view('admin.login');
     });
-    Route::match(['get','post'],'/admin','AdminController@login');
+    Route::post('/login','AdminController@login')->name('admin.login');
 
     Route::get('/home', function (){
         return view('layout');
     })->name('home');
 
-    Route::get('logout','Auth\LoginController@logout');
+    Route::post('logout','Auth\LoginController@logout');
 
     Route::get('/slider/addSlider','SliderController@create');
     Route::post('/slider/addSlider','SliderController@store')->name('slider.store');
+    Route::get('/slider/viewSlider' , 'SliderController@show');
 
     Route::get('/tags/addTag','TagController@create');
     Route::post('/tags/addTag','TagController@store')->name('tags.store');
@@ -43,6 +44,6 @@ Route::group(['prefix' => 'admin'], function (){
 
 });
 
-    Route::get('index' , 'SliderController@index');
+    Route::get('/' , 'SliderController@index');
 
 

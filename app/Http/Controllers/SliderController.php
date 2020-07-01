@@ -45,6 +45,7 @@ return view('website.index')->with(compact('sliders'));
             'image' => 'image|required',
         ]);
 
+
         $slider = new slider();
         $slider->title = $request->title;
         $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
@@ -69,7 +70,9 @@ return view('website.index')->with(compact('sliders'));
      */
     public function show(Slider $slider)
     {
-        //
+        $slider =Slider::all();
+        return view('admin.slider.viewSlider')->with(compact('slider'));
+
     }
 
     /**

@@ -39,7 +39,12 @@
 <div id="sidebar"><a href="" class="visible-phone"><i class="icon icon-home"></i>AvoCode</a>
     <ul>
         <li class="active"><a href="/layout"><i class="icon icon-home"></i> <span>AvoCode</span></a></li>
-        <li class=""><a href="/admin/slider/addSlider"><i class="icon icon-home"></i> <span>slider</span></a></li>
+        <li class="submenu"><a href="/admin/slider/addSlider"><i class="icon icon-home"></i> <span>slider</span></a></li>
+        <ul>
+            <li><a href="/admin/slider/viewSlider"><i class="icon icon-home"></i> <span>View Slider</span></a></li>
+
+        </ul>
+
         <li class=""><a href="/admin/tags/addTag"><i class="icon icon-home"></i> <span>Tag</span></a></li>
         <li class=""><a href="/admin/service/addService"><i class="icon icon-home"></i> <span>Services</span></a></li>
         <li class=""><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>Sub_Services</span></a></li>

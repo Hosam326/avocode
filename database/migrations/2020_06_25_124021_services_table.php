@@ -15,7 +15,6 @@ class ServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('type');
             $table->String('title');
             $table->String('icon');
             $table->String('image');

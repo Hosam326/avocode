@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="loginbox">
-            <form id="loginform" class="form-vertical" action="{{url('admin')}}" method="post">
+            <form id="loginform" class="form-vertical" action="{{route('admin.login')}}" method="post">
                 {{ csrf_field()}}
 				 <div class="control-group normal_text"> <h3><img src="{{asset('images/backend_images//logo.png')}}" alt="Logo" /></h3></div>
                 <div class="control-group">
