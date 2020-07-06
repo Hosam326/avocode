@@ -39,16 +39,53 @@
 <div id="sidebar"><a href="" class="visible-phone"><i class="icon icon-home"></i>AvoCode</a>
     <ul>
         <li class="active"><a href="/layout"><i class="icon icon-home"></i> <span>AvoCode</span></a></li>
-        <li class="submenu"><a href="/admin/slider/addSlider"><i class="icon icon-home"></i> <span>slider</span></a></li>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>slider</span></a></li>
         <ul>
             <li><a href="/admin/slider/viewSlider"><i class="icon icon-home"></i> <span>View Slider</span></a></li>
+            <li><a href="/admin/slider/addSlider"><i class="icon icon-home"></i> <span>Add Slider</span></a></li>
 
         </ul>
 
-        <li class=""><a href="/admin/tags/addTag"><i class="icon icon-home"></i> <span>Tag</span></a></li>
-        <li class=""><a href="/admin/service/addService"><i class="icon icon-home"></i> <span>Services</span></a></li>
-        <li class=""><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>Sub_Services</span></a></li>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Tag</span></a></li>
+        <ul>
+            <li><a href="/admin/tags/viewTag"><i class="icon icon-home"></i> <span>View Tag</span></a></li>
+            <li><a href="/admin/tags/addTag"><i class="icon icon-home"></i> <span>Add Tag</span></a></li>
 
+        </ul>
+
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Services</span></a></li>
+        <ul>
+            <li><a href="/admin/service/viewService"><i class="icon icon-home"></i> <span>View Services</span></a></li>
+            <li class=""><a href="/admin/service/addService"><i class="icon icon-home"></i> <span>add Service</span></a></li>
+
+        </ul>
+
+
+        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>Sub_Services</span></a></li>
+        <ul>
+            <li><a href="/admin/service/viewSubService"><i class="icon icon-home"></i> <span>View subService</span></a></li>
+            <li class=""><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>add subService</span></a></li>
+
+        </ul>
+
+        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>Advantages</span></a></li>
+        <ul>
+            <li><a href="/admin/advantage/viewAdvantage"><i class="icon icon-home"></i> <span>View Advantage</span></a></li>
+            <li class=""><a href="/admin/advantage/addAdvantage"><i class="icon icon-home"></i> <span>add Advantage</span></a></li>
+
+        </ul>
+        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>project_request</span></a></li>
+        <ul>
+            <li class=""><a href="/admin/project_request/addProjectRequest"><i class="icon icon-home"></i> <span>add project_request</span></a></li>
+            <li><a href="/admin/project_request/viewProjectRequest"><i class="icon icon-home"></i> <span>View project_request</span></a></li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Business</span></a></li>
+        <ul>
+            <li><a href="/admin/business/viewBusiness"><i class="icon icon-home"></i> <span>View Business</span></a></li>
+            <li class=""><a href="/admin/business/addBusiness"><i class="icon icon-home"></i> <span>add Business</span></a></li>
+            <li class=""><a href="/admin/business/photo/addBusinessPhoto"><i class="icon icon-home"></i> <span>add BusinessPhoto</span></a></li>
+
+        </ul>
     </ul>
 </div>
 <!--sidebar-menu-->

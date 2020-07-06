@@ -3,11 +3,13 @@
 @section('main-content')
     <section class="SLIDER">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                @foreach($sliders as $key => $item)
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$key}}" class="active"></li>
+                @endforeach
             </ol>
+
             <div class="carousel-inner">
                 @foreach($sliders as $key => $item)
                     <div class="carousel-item @if($key == 0) active @endif">
@@ -41,26 +43,14 @@
         <div class="container">
             <a class="Titel" href="http://">الخدمات</a>
             <div class="row">
-                <div class="col-lg-4">
-                    <a href="" class="card-Servies-avo">
-                        <img src="img/Servises/D-1.svg" alt="">
-                        <h1>تصميم داخلي</h1>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href="" class="card-Servies-avo">
-                        <img src="img/Servises/D-2.svg" alt="">
-                        <h1>تصميم معماري </h1>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href="" class="card-Servies-avo">
-                        <img src="img/Servises/D-3.svg" alt="">
-                        <h1>تصميم حدائق</h1>
-                    </a>
-                </div>
-
-
+                @foreach($services as $item)
+                    <div class="col-lg-4">
+                        <a href="{{ route('serviceDetail.show', $item->id) }}" class="card-Servies-avo">
+                            <img src="{{ $item->image_link }}" alt="first">
+                            <h1>{{ $item->title }}</h1>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </Section>
@@ -72,95 +62,37 @@
                 <div class="col-lg-3">
                     <div class="card-Featuers-avo">
                         <div class="row">
-                            <h1 class="col-lg-8 col-md-6 col">تفكر وإبداع</h1>
-                            <img class="col-lg-4 col-md-6 col" src="img/Features/ic-s-1.svg" alt="">
+                            @foreach($advantages as $item)
+                            <h1 class="col-lg-8 col-md-6 col">{{$item->title}}</h1>
+                            <img class="col-lg-4 col-md-6 col" src="{{$item->image_link}}" alt="first">
                         </div>
-                        <p>حيث نسعى الى الوصول لحلول فريدة من نوعها ومبتكرة حتى تلمّع وتُبرز تميز علامتك التجارية
-                            وأعمالك وتجذب انتباه العملاء، فأساس نجاح العمل هو الفكرة.</p>
+                        <p>{{$item->description}}</p>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="card-Featuers-avo">
-                        <div class="row">
-                            <h1 class="col-lg-8 col-md-6 col">فريق عمل محترف</h1>
-
-                            <img class="col-lg-4 col-md-6 col" src="img/Features/ic-s-2.svg" alt="">
-                        </div>
-                        <p>كل يوم يتعلم فريق العمل شيئاً جديداً، ويحمل الشغف لإفادتك بخبراته ومهاراته، ففريق العمل
-                            لدينا يعمل كوحدة واحدة في صالح انجاح العمل.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card-Featuers-avo">
-
-                        <div class="row">
-                            <h1 class="col-lg-8 col-md-6 col">أسعار مناسبة</h1>
-
-                            <img class="col-lg-4 col-md-6 col" src="img/Features/ic-s-3.svg" alt="">
-                        </div>
-                        <p>خدمات عالية الجودة صُمّمت في باقات متنوعة ومتعددة، وبأسعار مناسبة ومرنة حتى تناسب كافة
-                            المؤسسات وجميع الشركات بمختلف أحجامها.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card-Featuers-avo">
-
-                        <div class="row">
-                            <h1 class="col-lg-8 col-md-6 col">خدمة عملاء مستمرة</h1>
-
-                            <img class="col-lg-4 col-md-6 col" src="img/Features/ic-s-4.svg" alt="">
-                        </div>
-                        <p>يستمتع فريق خدمة العملاء بقضاء الوقت في التحدث مع العملاء لحل مشكلاتهم على وجه السرعة للتأكد
-                            من رضاهم التامّ عن الخدمة المقدمة.</p></div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <section class="how-to">
         <div class="container">
             <a class="Titel" href="http://">كيف تتطلب مشروعك</a>
-
             <div class="row">
                 <div class="col-lg-6">
                     <ul>
-                        <li>
-                            <h6>تقديم الطلب</h6>
-                            <p class="">
-                                عـن طـريق الضغـط علـى ((اطلــب خدمتك)) وكتابـة كافـة تفاصيل مشروعكم.
-                            </p>
-
-                        </li>
-                        <li>
-                            <h6>تقديم الطلب</h6>
-                            <p class="">
-                                عـن طـريق الضغـط علـى ((اطلــب خدمتك)) وكتابـة كافـة تفاصيل مشروعكم.
-                            </p>
-
-                        </li>
-                        <li>
-                            <h6>تقديم الطلب</h6>
-                            <p class="">
-                                عـن طـريق الضغـط علـى ((اطلــب خدمتك)) وكتابـة كافـة تفاصيل مشروعكم.
-                            </p>
-
-                        </li>
-                        <li>
-                            <h6>تقديم الطلب</h6>
-                            <p class="">
-                                عـن طـريق الضغـط علـى ((اطلــب خدمتك)) وكتابـة كافـة تفاصيل مشروعكم.
-                            </p>
-
-                        </li>
+                        @foreach($projectRequest as $item)
+                            <li>
+                                <h6>{{$item->title}}</h6>
+                                <p class="">{{$item->description}}</p>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-lg-6">
-                    <img src="img/how-to.png" alt="">
+                    <img src="{{$project_image->image_link}}" alt="">
                 </div>
             </div>
         </div>
     </section>
-
-
 
     <section class="proti">
 
@@ -168,60 +100,19 @@
 
             <a class="detiel" href="">عرض المزيد</a>
 
-            <a class="Titel" href="http://">أعمالنا</a>
+            <a class="Titel">أعمالنا</a>
             <div class="row">
+                @foreach($advantages as $item)
                 <div class="col-lg-4">
                     <div class="card-proti">
-                        <a href="" class="over-lay-proti">
-                            <span>هيا بنا نذهب ل تفاصيل العمل ☺</span>
-
+                        <a href="{{ route('businessDetail.show', $item->id) }}" class="over-lay-proti">
+                            <span>{{$item->title}}</span>
                         </a>
-                        <img src="img/protofile/1.jpg" alt="">
+                        <img src="{{$item->image_link}}" alt="">
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card-proti">
-                        <a href="" class="over-lay-proti">
-                            <span>هيا بنا نذهب ل تفاصيل العمل ☺</span>
-                        </a>
-                        <img src="img/protofile/2.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card-proti">
-                        <a href="" class="over-lay-proti">
-                            <span>هيا بنا نذهب ل تفاصيل العمل ☺</span>
-                        </a>
-                        <img src="img/protofile/3.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card-proti">
-                        <a href="" class="over-lay-proti">
-                            <span>هيا بنا نذهب ل تفاصيل العمل ☺</span>
-                        </a>
-                        <img src="img/protofile/4.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card-proti">
-                        <a href="" class="over-lay-proti">
-                            <span>هيا بنا نذهب ل تفاصيل العمل ☺</span>
-                        </a>
-                        <img src="img/protofile/5.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card-proti">
-                        <a href="" class="over-lay-proti">
-                            <span>هيا بنا نذهب ل تفاصيل العمل ☺</span>
-                        </a>
-                        <img src="img/img/work6.png" alt="">
-                    </div>
-                </div>
-
             </div>
-
         </div>
     </section>
     <section class="ads" style="background-image: url(img/bg.png);">
@@ -236,7 +127,7 @@
 
     <section class="blog">
         <div class="container">
-            <a class="Titel" href="http://">المدونة</a>
+            <div class="Titel">المدونة</div>
 
             <div class="row">
                 <div class="col-lg-3 col-md-4">

@@ -81,9 +81,11 @@ return view('website.index')->with(compact('sliders'));
      * @param \App\Slider $slider
      * @return \Illuminate\Http\Response
      */
-    public function edit(Slider $slider)
+    public function edit($id)
     {
-        //
+        $slider = Slider::query()->find($id);
+        $tags = Tag::all();
+        return view('admin.slider.editSlider', compact('slider', 'tags'));
     }
 
     /**
@@ -93,9 +95,29 @@ return view('website.index')->with(compact('sliders'));
      * @param \App\Slider $slider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Slider $slider)
+    public function update(Request $request, $id)
     {
-        //
+//        dd($request->all());
+        $slider = Slider::query()->find($id);
+
+        $this->validate($request, [
+            'title' => 'required',
+            'tag_id' => 'required|array',
+            'image' => 'image|nullable',
+        ]);
+
+//        dd($request);
+        $slider->title = $request->title;
+
+        if ($request->image){
+            $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
+            $slider->image = $fileName->getBasename();
+        }
+        $slider->update();
+
+        $slider->tags()->sync($request->tag_id);
+
+        return redirect(route('slider.index'));
     }
 
     /**
@@ -104,8 +126,9 @@ return view('website.index')->with(compact('sliders'));
      * @param \App\Slider $slider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Slider $slider)
+    public function destroy($id)
     {
-        //
+        Slider::query()->find($id)->delete();
+        return redirect('/admin/slider/viewSlider');
     }
 }

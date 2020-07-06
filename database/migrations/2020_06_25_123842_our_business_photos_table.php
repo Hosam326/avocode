@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class OurBusinessPhotosTable extends Migration
+class business_photosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class OurBusinessPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('our_business_photos', function (Blueprint $table) {
+        Schema::create('business_photos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('image');
-            $table->integer('work_id');
-            $table->rememberToken();
+            $table->unsignedBigInteger('work_id');
+            $table->foreign('work_id')->references('our_business')->on('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

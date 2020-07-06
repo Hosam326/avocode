@@ -18,7 +18,6 @@ class TeamJobTable extends Migration
             $table->String('name');
             $table->String('job_name');
             $table->String('image');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

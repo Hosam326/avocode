@@ -13,11 +13,12 @@ class OurBusinessTable extends Migration
      */
     public function up()
     {
-        Schema::create('our_business', function (Blueprint $table) {
+        Schema::create('businesses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('title');
-            $table->String('type_job');
-            $table->rememberToken();
+            $table->String('image');
+            $table->text('description');
+            $table->integer('type');
             $table->timestamps();
         });
     }

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Service;
-use App\SubService;
+use App\Advantage;
 use Illuminate\Http\Request;
 
-class SubServiceController extends Controller
+class AdvantageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,8 +24,7 @@ class SubServiceController extends Controller
      */
     public function create()
     {
-        $services = Service::all();
-        return view('admin.service.subService', compact('services'));
+        return view('admin.advantage.addAdvantage');
     }
 
     /**
@@ -41,77 +39,71 @@ class SubServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'image|required',
-            'service_id' => 'required',
         ]);
 
-        $subService = new subservice();
-        $subService->title = $request->title;
-        $subService->description = $request->description;
+        $advantage = new advantage();
+        $advantage->title = $request->title;
+        $advantage->description = $request->description;
         $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
-        $subService->image= $fileName->getBasename();
-        $subService->service_id= $request->service_id;
-        $subService->save();
+        $advantage->image= $fileName->getBasename();
+        $advantage->save();
 
-        return redirect("admin/service/subService");
+        return redirect("admin/advantage/addAdvantage");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\Advantage  $advantage
      * @return \Illuminate\Http\Response
      */
-    public function show(SubService $subService)
+    public function show(Advantage $advantage)
     {
-        $subService =SubService::all();
-        return view('admin.service.viewSubService')->with(compact('subService'));
+        $advantage =Advantage::all();
+        return view('admin.advantage.viewAdvantage')->with(compact('advantage'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\Advantage  $advantage
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
-        $subService = SubService::query()->find($id);
-        $services = Service::all();
-        return view('admin.service.editSubService', compact('subService', 'services'));
+        $advantage = Advantage::query()->find($id);
+        return view('admin.advantage.editAdvantage', compact('advantage'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SubService  $subService
+     * @param  \App\Advantage  $advantage
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $subService = SubService::query()->find($id);
-        $subService->title = $request->title;
-        $subService->description = $request->description;
-        $subService->service_id = $request->service_id;
+        $advantage = Advantage::query()->find($id);
+        $advantage->title = $request->title;
+        $advantage->description = $request->description;
         if ($request->image){
             $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
-            $subService->image = $fileName->getBasename();
+            $advantage->image = $fileName->getBasename();
         }
-
-        $subService->update();
-        return redirect(route('subService.show'));
-
+        $advantage->update();
+        return redirect(route('advantage.show'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\Advantage  $advantage
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        SubService::query()->find($id)->delete();
-        return redirect('/admin/service/viewSubService');
+        Advantage::query()->find($id)->delete();
+        return redirect('admin/advantage/viewAdvantage');
     }
 }

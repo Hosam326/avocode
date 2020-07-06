@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
+use App\BusinessPhoto;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class BusinessPhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.addTag');
+        return view('admin.business.photo.addBusinessPhoto');
+
     }
 
     /**
@@ -36,70 +37,61 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required'
+            'image' => 'image|required',
+            'service_id' => 'required',
         ]);
 
-        $tag = new tag();
-        $tag->title = $request->title;
-        $tag->save();
+        $businessPhoto = new businessphoto();
+        $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
+        $businessPhoto->image= $fileName->getBasename();
+        $businessPhoto->work_id= $request->work_id;
+        $businessPhoto->save();
 
-        return redirect("admin/tags/addTag");
+        return redirect("admin/business/photo/addBusinessPhoto");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tag  $tag
+     * @param  \App\BusinessPhoto  $businessPhoto
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show(BusinessPhoto $businessPhoto)
     {
-        $tag =Tag::all();
-        return view('admin.TAGS.viewTag')->with(compact('tag'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tag  $tag
+     * @param  \App\BusinessPhoto  $businessPhoto
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BusinessPhoto $businessPhoto)
     {
-        $tag = Tag::query()->find($id);
-        return view('admin.tags.editTag', compact('tag'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tag  $tag
+     * @param  \App\BusinessPhoto  $businessPhoto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BusinessPhoto $businessPhoto)
     {
-        $tag = Tag::query()->find($id);
-        $this->validate($request, [
-            'title' => 'required',
-
-        ]);
-        $tag->title = $request->title;
-        $tag->update();
-        return redirect(route('tags.show'));
-
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tag  $tag
+     * @param  \App\BusinessPhoto  $businessPhoto
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BusinessPhoto $businessPhoto)
     {
-        Tag::query()->find($id)->delete();
-        return redirect('/admin/tags/viewTag');
+        //
     }
 }

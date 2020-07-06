@@ -13,12 +13,11 @@ class ProjectRequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_request', function (Blueprint $table) {
+        Schema::create('project_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('title');
             $table->String('description');
             $table->String('image');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

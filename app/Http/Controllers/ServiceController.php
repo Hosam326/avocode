@@ -14,7 +14,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $service =Service::all();
+        return view('admin.service.viewService')->with(compact('service'));
     }
 
     /**
@@ -63,7 +64,8 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        $service =Service::all();
+        return view('admin.service.viewService')->with(compact('service'));
     }
 
     /**
@@ -72,9 +74,10 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
-        //
+        $service = Service::query()->find($id);
+        return view('admin.service.editService', compact('service'));
     }
 
     /**
@@ -84,9 +87,21 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, $id)
     {
-        //
+        $service = Service::query()->find($id);
+        $service->title = $request->title;
+        $service->description = $request->description;
+        if ($request->image){
+            $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
+            $service->image = $fileName->getBasename();
+        }
+        if ($request->icon){
+            $fileName = $request->icon->move(public_path('icons'), str_replace(' ', '', $request->icon->getClientOriginalName()));
+            $service->icon= $fileName->getBasename();
+        }
+        $service->update();
+        return redirect(route('service.show'));
     }
 
     /**
@@ -95,8 +110,9 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
-        //
+        Service::query()->find($id)->delete();
+        return redirect('admin/service/viewService');
     }
 }
