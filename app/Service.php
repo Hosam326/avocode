@@ -10,9 +10,13 @@ class Service extends Model
     {
         return $this->hasMany('App\subService');
     }
-
     public function getImageLinkAttribute()
     {
         return $this->image ? url('/') . '/images/' . $this->image : url('/') . '';
+    }
+
+    public function business()
+    {
+        return $this->hasMany('App\business', 'type');
     }
 }

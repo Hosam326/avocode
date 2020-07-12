@@ -26,9 +26,8 @@
                 <a class="Titel" href="http://">اكتشف خدماتنا</a>
 
                 <div class="row">
-
-                    <div class="col-lg-3">
-                        @foreach($service->subService as $sub)
+                    @foreach($service->subService as $sub)
+                        <div class="col-lg-3">
                             <a href="{{route('subService.show', $sub->id)}}" class="card-servs-all">
                                 <div class="serv-img">
                                     <img src="{{$sub->image_link}}" alt="">
@@ -36,11 +35,10 @@
                                 <div class="parg-sev">
                                     <h1>{{$sub->title}}</h1>
                                     <p>{{$sub->description}}</p>
-
                                 </div>
                             </a>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>

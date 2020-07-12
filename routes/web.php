@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes();
 
 Route::group(['prefix' => 'admin'], function () {
@@ -34,7 +32,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/slider/{id}/edit', 'SliderController@edit')->name('slider.edit');
     Route::put('/slider/{id}/update', 'SliderController@update')->name('slider.update');
 
-
     Route::get('/tags/addTag', 'TagController@create');
     Route::post('/tags/addTag', 'TagController@store')->name('tags.store');
     Route::get('/tags/viewTag', 'TagController@show')->name('tags.show');
@@ -48,9 +45,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::delete('/service/{id}/delete', 'ServiceController@destroy')->name('service.delete');
     Route::get('/service/{id}/edit', 'ServiceController@edit')->name('edit.service');
     Route::put('/service/{id}/update', 'ServiceController@update')->name('service.update');
-
-//    Route::resource('services', 'ServiceController');
-
 
     Route::get('/service/subService', 'SubServiceController@create');
     Route::post('/service/subService', 'SubServiceController@store')->name('subService.store');
@@ -84,20 +78,65 @@ Route::group(['prefix' => 'admin'], function () {
     Route::delete('/business/{id}/delete', 'BusinessController@destroy')->name('business.delete');
     Route::get('/business/{id}/edit', 'BusinessController@edit')->name('business.edit');
     Route::put('/business/{id}/update', 'BusinessController@update')->name('business.update');
-
     Route::get('/business/photo/addBusinessPhoto', 'BusinessPhotoController@create');
     Route::post('/business/photo/addBusinessPhoto', 'BusinessPhotoController@store')->name('businessPhoto.store');
+
+    Route::get('/advertising/addAdvertising', 'AdvertisingController@create');
+    Route::post('/advertising/addAdvertising', 'AdvertisingController@store')->name('advertising.store');
+    Route::get('/advertising/viewAdvertising', 'AdvertisingController@index')->name('advertising.index');
+    Route::delete('/advertising/{id}/delete', 'AdvertisingController@destroy')->name('advertising.delete');
+    Route::get('/advertising/{id}/edit', 'AdvertisingController@edit')->name('advertising.edit');
+    Route::put('/advertising/{id}/update', 'AdvertisingController@update')->name('advertising.update');
+
+    Route::get('/blog/addBlog', 'BlogController@create');
+    Route::post('/blog/addBlog', 'BlogController@store')->name('blog.store');
+    Route::get('/blog/viewBlog', 'BlogController@index')->name('blog.index');
+    Route::delete('/blog/{id}/delete', 'BlogController@destroy')->name('blog.delete');
+    Route::get('/blog/{id}/edit', 'BlogController@edit')->name('blog.edit');
+    Route::put('/blog/{id}/update', 'BlogController@update')->name('blog.update');
+
+    Route::get('/about/about', 'AboutController@create');
+    Route::post('/about/about', 'AboutController@store')->name('about.store');
+    Route::get('/about/viewAbout', 'AboutController@index')->name('about.index');
+    Route::delete('/about/{id}/delete', 'AboutController@destroy')->name('about.delete');
+    Route::get('/about/{id}/edit', 'AboutController@edit')->name('about.edit');
+    Route::put('/about/{id}/update', 'AboutController@update')->name('about.update');
 
 
 
 });
 
-Route::get('/', 'website\HomeController@index');
+Route::get('/', 'website\HomeController@index')->name('home');
 Route::get('/services/{id}/details', 'website\HomeController@showService')->name('serviceDetail.show');
 Route::get('/advantages/{id}/details', 'website\HomeController@showAdvantage');
 Route::get('/subServices/{id}/details', 'website\HomeController@showSubService')->name('subService.show');
 Route::get('/project_request/{id}/details', 'website\HomeController@showProjectRequest');
 Route::get('/business/{id}/details', 'website\HomeController@showBusiness')->name('businessDetail.show');
+Route::get('/our_work', 'website\HomeController@our_works')->name('our_works.show');
+Route::get('/advertising/{id}/details', 'website\HomeController@showAdvertising');
+Route::get('/blog/{id}/details', 'website\HomeController@showBlog')->name('blog.show');
+Route::get('/about', 'website\HomeController@about_As')->name('about_As.show');
+Route::get('/group_company', 'website\HomeController@group_company')->name('group_company.show');
+Route::get('/jopApp', 'website\HomeController@jopApp')->name('jopApp.show');
+Route::get('/team', 'website\HomeController@team')->name('team.show');
+Route::get('/contact', 'website\HomeController@contact')->name('contact.show');
+Route::get('/trm', 'website\HomeController@trm')->name('trm.show');
+Route::get('/privacy', 'website\HomeController@privacy')->name('privacy.show');
+Route::get('/rating', 'website\HomeController@rating')->name('rating.show');
+Route::get('/blog', 'website\HomeController@blog')->name('blog.show');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

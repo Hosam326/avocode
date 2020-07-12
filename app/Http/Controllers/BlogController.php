@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Service;
-use App\SubService;
+use App\Blog;
 use Illuminate\Http\Request;
 
-class SubServiceController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,8 @@ class SubServiceController extends Controller
      */
     public function index()
     {
-        //
+        $blog =Blog::all();
+        return view('admin.blog.viewBlog')->with(compact('blog'));
     }
 
     /**
@@ -25,8 +25,8 @@ class SubServiceController extends Controller
      */
     public function create()
     {
-        $services = Service::all();
-        return view('admin.service.subService', compact('services'));
+        return view('admin.blog.addBlog');
+
     }
 
     /**
@@ -41,76 +41,69 @@ class SubServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'image|required',
-            'service_id' => 'required',
         ]);
 
-        $subService = new subservice();
-        $subService->title = $request->title;
-        $subService->description = $request->description;
+        $blog = new blog();
+        $blog->title = $request->title;
+        $blog->description = $request->description;
         $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
-        $subService->image= $fileName->getBasename();
-        $subService->service_id= $request->service_id;
-        $subService->save();
-        return redirect("admin/service/subService");
+        $blog->image= $fileName->getBasename();
+        $blog->save();
+        return redirect("admin/blog/addBlog");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(SubService $subService)
+    public function show(Blog $blog)
     {
-        $subService =SubService::all();
-        return view('admin.service.viewSubService')->with(compact('subService'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $subService = SubService::query()->find($id);
-        $services = Service::all();
-        return view('admin.service.editSubService', compact('subService', 'services'));
+        $blog = Blog::query()->find($id);
+        return view('admin.blog.editBlog', compact('blog'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SubService  $subService
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $subService = SubService::query()->find($id);
-        $subService->title = $request->title;
-        $subService->description = $request->description;
-        $subService->service_id = $request->service_id;
+        $blog = Blog::query()->find($id);
+        $blog->title = $request->title;
+        $blog->description = $request->description;
         if ($request->image){
             $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
-            $subService->image = $fileName->getBasename();
+            $blog->image = $fileName->getBasename();
         }
-
-        $subService->update();
-        return redirect(route('subService.show'));
-
+        $blog->update();
+        return redirect(route('blog.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        SubService::query()->find($id)->delete();
-        return redirect('/admin/service/viewSubService');
+        Blog::query()->find($id)->delete();
+        return redirect('admin/blog/viewBlog');
     }
 }

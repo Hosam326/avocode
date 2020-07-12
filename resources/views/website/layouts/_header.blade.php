@@ -15,7 +15,7 @@
                 <li class="close"><span onclick="Hide()">×</span></li>
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="servieses.html"></a>خدماتنا</li>
-                <li><a href="works.html"></a>الاعمال</li>
+                <li><a href="{{ route('our_works.show') }}"></a>الاعمال</li>
                 <li><a href="about-as.htm"></a>من نحن</li>
                 <li><a href="rating.html"></a>اراء العملاء</li>
                 <li><a href="group-company.html"></a>مجموعة أفوكود</li>
@@ -41,14 +41,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class=" nav-link " href="index.html">الرئيسية <span class="sr-only">(current)</span></a>
+                    <a class=" nav-link " href="{{ route('home') }}">الرئيسية <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class=" nav-link" href="about-as.htm">من نحن</a>
+                    <a class=" nav-link" href="{{ route('about_As.show') }}">من نحن</a>
                 </li>
                 <li class="nav-item">
-                    <a class=" nav-link" href="group-company.html">مجموعة أفوكود</a>
+                    <a class=" nav-link" href="{{ route('group_company.show') }}">مجموعة أفوكود</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,21 +61,19 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class=" nav-link" href="works.html">أعمالنا</a>
+                    <a class=" nav-link" href="{{ route('our_works.show') }}">أعمالنا</a>
                 </li>
                 <li class="nav-item">
-                    <a class=" nav-link" href="jopapp.html">التوظيف</a>
+                    <a class=" nav-link" href="{{ route('jopApp.show') }}">التوظيف</a>
                 </li>
                 <li class="nav-item">
-                    <a class=" nav-link" href="team.html">فريق العمل</a>
-                </li>
-
-
-                <li class="nav-item">
-                    <a class=" nav-link" href="blog.html">المدونة</a>
+                    <a class=" nav-link" href="{{ route('team.show') }}">فريق العمل</a>
                 </li>
                 <li class="nav-item">
-                    <a class=" nav-link" href="contact.html">اتصل بنا</a>
+                    <a class=" nav-link" href="{{ route('blog.show') }}">المدونة</a>
+                </li>
+                <li class="nav-item">
+                    <a class=" nav-link" href="{{ route('contact.show') }}">اتصل بنا</a>
                 </li>
             </ul>
             <ul class="social-media">

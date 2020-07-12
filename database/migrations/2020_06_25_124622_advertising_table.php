@@ -19,7 +19,7 @@ class AdvertisingTable extends Migration
             $table->String('description');
             $table->String('link');
             $table->integer('page_id');
-            $table->rememberToken();
+            $table->String('image');
             $table->timestamps();
         });
     }

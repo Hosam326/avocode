@@ -12,10 +12,10 @@
             <div class="col-lg-3 R col ">
                 <h1>روابط هامة</h1>
                 <ul>
-                    <li><a href="treams.html">الشروط والاحكام</a></li>
-                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
-                    <li><a href="group-company.html">مجموعة الشركات</a></li>
-                    <li><a href="rating.html">اراء العملاء</a></li>
+                    <li><a href="{{ route('trm.show') }}">الشروط والاحكام</a></li>
+                    <li><a href="{{ route('privacy.show') }}">سياسة الخصوصية</a></li>
+                    <li><a href="{{ route('group_company.show') }}">مجموعة الشركات</a></li>
+                    <li><a href="{{ route('rating.show') }}">اراء العملاء</a></li>
 
 
 
@@ -26,10 +26,10 @@
 
                 <h1>عنا</h1>
                 <ul>
-                    <li><a href="jopapp.html">طلب توظيف</a></li>
-                    <li><a href="about-as.htm">من نحن</a></li>
+                    <li><a href="{{ route('jopApp.show') }}">طلب توظيف</a></li>
+                    <li><a href="{{ route('about_As.show') }}">من نحن </a></li>
                     <li><a href="blog.html">المدونة</a></li>
-                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <li><a href="{{ route('contact.show') }}">اتصل بنا</a></li>
 
                 </ul>
             </div>

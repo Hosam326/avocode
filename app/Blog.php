@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BusinessPhoto extends Model
+class Blog extends Model
 {
-    protected $table = 'business_photos';
-    protected $fillable = ['image', 'work_id'];
+//    protected $appends =['image_link'];
 
     public function getImageLinkAttribute()
     {

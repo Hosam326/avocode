@@ -17,7 +17,7 @@ class SliderController extends Controller
     public function index()
     {
         $sliders = Slider::get();
-return view('website.index')->with(compact('sliders'));
+        return view('website.index')->with(compact('sliders'));
     }
 
     /**
@@ -28,7 +28,7 @@ return view('website.index')->with(compact('sliders'));
     public function create()
     {
 
-        return view('admin.slider.addSlider')->with('tags',Tag::get());
+        return view('admin.slider.addSlider')->with('tags', Tag::get());
     }
 
     /**
@@ -52,7 +52,7 @@ return view('website.index')->with(compact('sliders'));
         $slider->image = $fileName->getBasename();
         $slider->save();
 
-        foreach ($request->tag_id as $tag){
+        foreach ($request->tag_id as $tag) {
             SliderTags::query()->create([
                 'tag_id' => $tag,
                 'slider_id' => $slider->id
@@ -70,7 +70,7 @@ return view('website.index')->with(compact('sliders'));
      */
     public function show(Slider $slider)
     {
-        $slider =Slider::all();
+        $slider = Slider::all();
         return view('admin.slider.viewSlider')->with(compact('slider'));
 
     }
@@ -109,7 +109,7 @@ return view('website.index')->with(compact('sliders'));
 //        dd($request);
         $slider->title = $request->title;
 
-        if ($request->image){
+        if ($request->image) {
             $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
             $slider->image = $fileName->getBasename();
         }

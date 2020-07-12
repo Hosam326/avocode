@@ -56,35 +56,71 @@
         <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Services</span></a></li>
         <ul>
             <li><a href="/admin/service/viewService"><i class="icon icon-home"></i> <span>View Services</span></a></li>
-            <li class=""><a href="/admin/service/addService"><i class="icon icon-home"></i> <span>add Service</span></a></li>
+            <li class=""><a href="/admin/service/addService"><i class="icon icon-home"></i> <span>add Service</span></a>
+            </li>
 
         </ul>
 
 
-        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>Sub_Services</span></a></li>
+        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>Sub_Services</span></a>
+        </li>
         <ul>
-            <li><a href="/admin/service/viewSubService"><i class="icon icon-home"></i> <span>View subService</span></a></li>
-            <li class=""><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>add subService</span></a></li>
+            <li><a href="/admin/service/viewSubService"><i class="icon icon-home"></i> <span>View subService</span></a>
+            </li>
+            <li class=""><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>add subService</span></a>
+            </li>
 
         </ul>
 
-        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>Advantages</span></a></li>
+        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i>
+                <span>Advantages</span></a></li>
         <ul>
-            <li><a href="/admin/advantage/viewAdvantage"><i class="icon icon-home"></i> <span>View Advantage</span></a></li>
-            <li class=""><a href="/admin/advantage/addAdvantage"><i class="icon icon-home"></i> <span>add Advantage</span></a></li>
+            <li><a href="/admin/advantage/viewAdvantage"><i class="icon icon-home"></i> <span>View Advantage</span></a>
+            </li>
+            <li class=""><a href="/admin/advantage/addAdvantage"><i class="icon icon-home"></i>
+                    <span>add Advantage</span></a></li>
 
         </ul>
-        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i> <span>project_request</span></a></li>
+        <li class="submenu"><a href="/admin/service/subService"><i class="icon icon-home"></i>
+                <span>project_request</span></a></li>
         <ul>
-            <li class=""><a href="/admin/project_request/addProjectRequest"><i class="icon icon-home"></i> <span>add project_request</span></a></li>
-            <li><a href="/admin/project_request/viewProjectRequest"><i class="icon icon-home"></i> <span>View project_request</span></a></li>
+            <li class=""><a href="/admin/project_request/addProjectRequest"><i class="icon icon-home"></i> <span>add project_request</span></a>
+            </li>
+            <li><a href="/admin/project_request/viewProjectRequest"><i class="icon icon-home"></i> <span>View project_request</span></a>
+            </li>
         </ul>
         <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Business</span></a></li>
         <ul>
-            <li><a href="/admin/business/viewBusiness"><i class="icon icon-home"></i> <span>View Business</span></a></li>
-            <li class=""><a href="/admin/business/addBusiness"><i class="icon icon-home"></i> <span>add Business</span></a></li>
-            <li class=""><a href="/admin/business/photo/addBusinessPhoto"><i class="icon icon-home"></i> <span>add BusinessPhoto</span></a></li>
-
+            <li><a href="/admin/business/viewBusiness"><i class="icon icon-home"></i> <span>View Business</span></a>
+            </li>
+            <li class=""><a href="/admin/business/addBusiness"><i class="icon icon-home"></i> <span>add Business</span></a>
+            </li>
+            <li class=""><a href="/admin/business/photo/addBusinessPhoto"><i class="icon icon-home"></i> <span>add BusinessPhoto</span></a>
+            </li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Advertising</span></a></li>
+        <ul>
+            <li><a href="/admin/advertising/viewAdvertising"><i class="icon icon-home"></i>
+                    <span>View Advertising</span></a>
+            </li>
+            <li class=""><a href="/admin/advertising/addAdvertising"><i class="icon icon-home"></i> <span>add Advertising</span></a>
+            </li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Blog</span></a></li>
+        <ul>
+            <li><a href="/admin/blog/viewBlog"><i class="icon icon-home"></i>
+                    <span>View Blog</span></a>
+            </li>
+            <li class=""><a href="/admin/blog/addBlog"><i class="icon icon-home"></i> <span>add Blog</span></a>
+            </li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>About</span></a></li>
+        <ul>
+            <li><a href="/admin/about/viewAbout"><i class="icon icon-home"></i>
+                    <span>View About</span></a>
+            </li>
+            <li class=""><a href="/admin/about/about"><i class="icon icon-home"></i> <span>add About</span></a>
+            </li>
         </ul>
     </ul>
 </div>

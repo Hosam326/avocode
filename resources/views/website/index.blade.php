@@ -63,8 +63,8 @@
                     <div class="card-Featuers-avo">
                         <div class="row">
                             @foreach($advantages as $item)
-                            <h1 class="col-lg-8 col-md-6 col">{{$item->title}}</h1>
-                            <img class="col-lg-4 col-md-6 col" src="{{$item->image_link}}" alt="first">
+                                <h1 class="col-lg-8 col-md-6 col">{{$item->title}}</h1>
+                                <img class="col-lg-4 col-md-6 col" src="{{$item->image_link}}" alt="first">
                         </div>
                         <p>{{$item->description}}</p>
                     </div>
@@ -95,104 +95,56 @@
     </section>
 
     <section class="proti">
-
         <div class="container">
-
-            <a class="detiel" href="">عرض المزيد</a>
-
+            <a class="detiel" href="{{ route('our_works.show') }}">عرض المزيد</a>
             <a class="Titel">أعمالنا</a>
             <div class="row">
-                @foreach($advantages as $item)
-                <div class="col-lg-4">
-                    <div class="card-proti">
-                        <a href="{{ route('businessDetail.show', $item->id) }}" class="over-lay-proti">
-                            <span>{{$item->title}}</span>
-                        </a>
-                        <img src="{{$item->image_link}}" alt="">
-                        @endforeach
+                @foreach($business as $item)
+                    <div class="col-lg-4">
+                        <div class="card-proti">
+                            <a href="{{ route('businessDetail.show', $item->id) }}" class="over-lay-proti">
+                                <span>{{$item->title}}</span>
+                            </a>
+                            <img src="{{ @$item->businessImages->first()->image_link}}" alt="">
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
-    <section class="ads" style="background-image: url(img/bg.png);">
-        <div class="container">
-            <h1>هل تريد أن نساعدك بتصميم مشروعك؟ </h1>
-            <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-            <a type="button" class="btn btn-light">اطلب تصميمك الان</a>
 
-        </div>
-    </section>
-
-
+    @if($advertising)
+        <section class="ads" style="background-image: url({{$advertising->image_link}});">
+            <div class="container">
+                <h1>{{$advertising->title}}</h1>
+                <p>{{$advertising->description}}</p>
+                <a type="button" class="btn btn-light" href="{{$advertising->link}}">دخول</a>
+            </div>
+        </section>
+    @endif
     <section class="blog">
         <div class="container">
             <div class="Titel">المدونة</div>
 
             <div class="row">
-                <div class="col-lg-3 col-md-4">
-                    <div class="card-blog">
-                        <div class="blog-img">
-                            <img src="img/img/bg-header.jpg" alt="">
-                        </div>
-                        <h1>عنوان الخبر</h1>
-                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن</p>
-                        <div class="row">
-                            <span class="col-lg-6 col"><i class="fas fa-calendar-alt" aria-hidden="true"></i> 24/09/2019</span>
-                            <a href="http://" class="col-lg-6 col">عرض المزيد</a>
+                @foreach($blog as $item)
+                    <div class="col-lg-3 col-md-4">
+                        <div class="card-blog">
+                            <div class="blog-img">
+                                <img src="{{$item->image_link}}" alt="">
+                            </div>
+                            <h1>{{$item->title}}</h1>
+                            <p>{!! $item->description !!}</p>
+                            <div class="row">
+                                <span class="col-lg-6 col"><i class="fas fa-calendar-alt" aria-hidden="true">
+                                    </i>{{\Carbon\Carbon::parse($item->created_at)->format('d/m/Y')}}</span>
 
+                                <a href="{{ route('blog.show', $item->id) }}" class="col-lg-6 col">عرض المزيد</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--=====================================-->
-                <div class="col-lg-3 col-md-4">
-                    <div class="card-blog">
-                        <div class="blog-img">
-                            <img src="img/img/bg-header.jpg" alt="">
-                        </div>
-                        <h1>عنوان الخبر</h1>
-                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن</p>
-                        <div class="row">
-                            <span class="col-lg-6 col"><i class="fas fa-calendar-alt" aria-hidden="true"></i> 24/09/2019</span>
-                            <a href="http://" class="col-lg-6 col">عرض المزيد</a>
-
-                        </div>
-                    </div>
-                </div>
-                <!--=====================================-->
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="card-blog">
-                        <div class="blog-img">
-                            <img src="img/img/bg-header.jpg" alt="">
-                        </div>
-                        <h1>عنوان الخبر</h1>
-                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن</p>
-                        <div class="row">
-                            <span class="col-lg-6 col"><i class="fas fa-calendar-alt" aria-hidden="true"></i> 24/09/2019</span>
-                            <a href="http://" class="col-lg-6 col">عرض المزيد</a>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <div class="card-blog">
-                        <div class="blog-img">
-                            <img src="img/img/bg-header.jpg" alt="">
-                        </div>
-                        <h1>عنوان الخبر</h1>
-                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن</p>
-                        <div class="row">
-                            <span class="col-lg-6 col"><i class="fas fa-calendar-alt" aria-hidden="true"></i> 24/09/2019</span>
-                            <a href="http://" class="col-lg-6 col">عرض المزيد</a>
-
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-
         </div>
     </section>
-
 @endsection

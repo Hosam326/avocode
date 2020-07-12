@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Service;
-use App\SubService;
+use App\About;
 use Illuminate\Http\Request;
 
-class SubServiceController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,8 @@ class SubServiceController extends Controller
      */
     public function index()
     {
-        //
+        $about =About::all();
+        return view('admin.about.viewAbout')->with(compact('about'));
     }
 
     /**
@@ -25,8 +25,8 @@ class SubServiceController extends Controller
      */
     public function create()
     {
-        $services = Service::all();
-        return view('admin.service.subService', compact('services'));
+        return view('admin.about.about');
+
     }
 
     /**
@@ -41,76 +41,69 @@ class SubServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'image|required',
-            'service_id' => 'required',
         ]);
 
-        $subService = new subservice();
-        $subService->title = $request->title;
-        $subService->description = $request->description;
+        $about = new about();
+        $about->title = $request->title;
+        $about->description = $request->description;
         $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
-        $subService->image= $fileName->getBasename();
-        $subService->service_id= $request->service_id;
-        $subService->save();
-        return redirect("admin/service/subService");
+        $about->image= $fileName->getBasename();
+        $about->save();
+        return redirect("admin/about/about");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function show(SubService $subService)
+    public function show(About $about)
     {
-        $subService =SubService::all();
-        return view('admin.service.viewSubService')->with(compact('subService'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $subService = SubService::query()->find($id);
-        $services = Service::all();
-        return view('admin.service.editSubService', compact('subService', 'services'));
+        $about = About::query()->find($id);
+        return view('admin.about.editAbout', compact('about'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SubService  $subService
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        $subService = SubService::query()->find($id);
-        $subService->title = $request->title;
-        $subService->description = $request->description;
-        $subService->service_id = $request->service_id;
+        $about = About::query()->find($id);
+        $about->title = $request->title;
+        $about->description = $request->description;
         if ($request->image){
             $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
-            $subService->image = $fileName->getBasename();
+            $about->image = $fileName->getBasename();
         }
-
-        $subService->update();
-        return redirect(route('subService.show'));
-
+        $about->update();
+        return redirect(route('about.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SubService  $subService
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        SubService::query()->find($id)->delete();
-        return redirect('/admin/service/viewSubService');
+        About::query()->find($id)->delete();
+        return redirect('admin/about/viewAbout');
     }
 }

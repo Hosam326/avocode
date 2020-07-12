@@ -19,14 +19,20 @@
                                 <thead>
                                 <tr>
                                     <th>title</th>
+                                    <th>description</th>
                                     <th>image</th>
+                                    <th>type</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($business as $item)
                                     <tr class="odd gradeX">
                                         <td>{{$item->title}}</td>
+                                        <td>{{$item->description}}</td>
                                         <td style="width: 90px"><img src="{{asset('/images/'.$item->image)}}"></td>
+                                        <td>
+                                            {{@$item->service->title}}
+                                        </td>
                                         <td>
                                             <a href="{{ url('admin/business/'. $item->id . '/edit') }}" class="btn btn-xs btn-info">Edit</a>
                                             <form action="{{ url('admin/business/'. $item->id . '/delete') }}" method="post" style="display: inline;">
