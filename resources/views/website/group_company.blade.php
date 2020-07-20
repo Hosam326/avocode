@@ -4,110 +4,47 @@
     <main>
         <section class="jopapp">
             <div class="container">
-                <a class="Titel" href="http://">مجموعة أفوكود</a>
+                <div class="Titel" >مجموعة أفوكود</div>
                 <div class="card-titel-jopp row">
 
                     <div class="col-lg-6 p-jop">
-                        <h1>شركة أفوكود</h1>
-                        <p>
-                            تسعى شركة أفوكود للتصميم الداخلي جاهدة لتحقيق النمو،ونبحث في الشركة دائماً وبشكل حثيث عن المواهب المبدعة من شتى أنحاء العالم حيث أننا نبذل جهودنا بأن نبقى على تواصل مع أولئك اللذين يثقون بأنفسهم لتحقيق أفضل الإنجازات الحقيقية.إذا كنت تؤمن بمقدرتك الإبداعية الخلاقة وخبراتك الكافية ومتحمساً لأن تعمل في أفضل شركات التصميم الداخلي المرموقة في دبي وتكون جزءاً منها وسوف نتصل بك.
-
-
-                        </p>
-                        <span>حظاً سعيداً في تحقيق التفوق في حياتك المهنية.</span>
+                        <h1>{{ $group->title }}</h1>
+                        <p>{{ $group->description }}</p>
                     </div>
                     <div class="col-lg-6">
-                        <img src="img/header/algedra_career.jpg" alt="">
+                        <img src="{{ $group->image_link }}" alt="">
                     </div>
                 </div>
             </div>
         </section>
         <section class="group-company">
             <div class="container">
-
                 <div class="row">
+                    @foreach($groups as $item)
                     <div class="col-lg-6 col-md-6">
                         <div class="card-comapny row">
                             <div class="col-lg-3 col-md-3">
-                                <img src="img/img/Layer-0.png" alt="">
+                                <img src="{{$item->image_link}}" alt="">
                             </div>
                             <div class="col-lg-9 col-md-9">
-                                <h1>أفوكود ميديا</h1>
-                                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
+                                <h1>{{$item->title2}}</h1>
+                                <p>{{$item->description2}}</p>
                                 <a href="User-Registar.html" type="button" class="btn btn-outline-success">عرض موقع</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="card-comapny row">
-                            <div class="col-lg-3 col-md-3">
-                                <img src="img/img/Layer-0.png" alt="">
-                            </div>
-                            <div class="col-lg-9 col-md-9">
-                                <h1>أفوكود ميديا</h1>
-                                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                                <a href="User-Registar.html" type="button" class="btn btn-outline-success">عرض موقع</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="card-comapny row">
-                            <div class="col-lg-3 col-md-3">
-                                <img src="img/img/Layer-0.png" alt="">
-                            </div>
-                            <div class="col-lg-9 col-md-9">
-                                <h1>أفوكود ميديا</h1>
-                                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                                <a href="User-Registar.html" type="button" class="btn btn-outline-success">عرض موقع</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="card-comapny row">
-                            <div class="col-lg-3 col-md-3">
-                                <img src="img/img/Layer-0.png" alt="">
-                            </div>
-                            <div class="col-lg-9 col-md-9">
-                                <h1>أفوكود ميديا</h1>
-                                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                                <a href="User-Registar.html" type="button" class="btn btn-outline-success">عرض موقع</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="card-comapny row">
-                            <div class="col-lg-3 col-md-3">
-                                <img src="img/img/Layer-0.png" alt="">
-                            </div>
-                            <div class="col-lg-9 col-md-9">
-                                <h1>أفوكود ميديا</h1>
-                                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                                <a href="User-Registar.html" type="button" class="btn btn-outline-success">عرض موقع</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="card-comapny row">
-                            <div class="col-lg-3 col-md-3">
-                                <img src="img/img/Layer-0.png" alt="">
-                            </div>
-                            <div class="col-lg-9 col-md-9">
-                                <h1>أفوكود ميديا</h1>
-                                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                                <a href="User-Registar.html" type="button" class="btn btn-outline-success">عرض موقع</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
-        <section class="ads" style="margin-bottom: 0rem; background-image: url(img/bg.png);">
+        @if($advertising)
+        <section class="ads" style="margin-bottom: 0rem; background-image: url({{$advertising->image_link}});">
             <div class="container">
-                <h1>هل تخطط للدراسة في العطلة الصيفية؟</h1>
-                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                <a type="button" class="btn btn-light">ابدأ الدرس الأول</a>
-
+                <h1>{{$advertising->title}}</h1>
+                <p>{{$advertising->description}}</p>
+                <a type="button" class="btn btn-light" href="{{$advertising->link}}">دخول</a>
             </div>
         </section>
+        @endif
     </main>
 @endsection

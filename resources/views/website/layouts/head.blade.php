@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="{{asset('website/css/header.css')}}">
     <link rel="stylesheet" href="{{asset('website/css/slider.css')}}">
     <link rel="stylesheet" href="{{asset('website/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('website/css/rating.css')}}">
+
+
+
     <!--End css-->
+
 
 </head>

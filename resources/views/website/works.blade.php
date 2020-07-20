@@ -30,13 +30,14 @@
                 </div>
             </div>
         </section>
-        <section class="ads" style="margin-bottom: 0rem; ">
-            <div class="container">
-                <h1>هل تخطط للدراسة في العطلة الصيفية؟</h1>
-                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                <a type="button" class="btn btn-light">ابدأ الدرس الأول</a>
-
-            </div>
-        </section>
+        @if($advertising)
+            <section class="ads" style="margin-bottom: 0rem; background-image: url({{$advertising->image_link}});">
+                <div class="container">
+                    <h1>{{$advertising->title}}</h1>
+                    <p>{{$advertising->description}}</p>
+                    <a type="button" class="btn btn-light" href="{{$advertising->link}}">دخول</a>
+                </div>
+            </section>
+        @endif
     </main>
 @endsection

@@ -50,13 +50,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js"></script>
-
     <script>
         var editor = new FroalaEditor('#description');
     </script>

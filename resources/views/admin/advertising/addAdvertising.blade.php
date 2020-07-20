@@ -47,6 +47,14 @@
                                             <option value="1">الصفحة الرئيسية</option>
                                             <option value="2">مجموعة افوكود</option>
                                             <option value="3">من نحن</option>
+                                            <option value="4">اعمالنا</option>
+                                            <option value="5">التوظيف</option>
+                                            <option value="6">فريق العمل</option>
+                                            <option value="7">اتصل بنا</option>
+                                            <option value="8">الخدمات</option>
+                                            <option value="9">الخدمات الفرعية</option>
+                                            <option value="10">العمل</option>
+                                            <option value="11">المدونة</option>
                                         </select>
                                     </div>
                                 </div>

@@ -13,12 +13,14 @@ class SetAvoCodeTable extends Migration
      */
     public function up()
     {
-        Schema::create('set_avo', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('title');
-            $table->String('description');
-            $table->String('image');
-            $table->rememberToken();
+            $table->string('title');
+            $table->string('description');
+            $table->string('image');
+            $table->string('title2');
+            $table->string('description2');
+            $table->string('image2');
             $table->timestamps();
         });
     }

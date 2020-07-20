@@ -18,7 +18,7 @@ class BlogTable extends Migration
             $table->String('title');
             $table->String('description');
             $table->String('image');
-            $table->rememberToken();
+            $table->integer('view_count');
             $table->timestamps();
         });
     }

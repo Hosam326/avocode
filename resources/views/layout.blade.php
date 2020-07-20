@@ -27,8 +27,16 @@
 <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
 
-        <li class=""><a href="/logout"><i class="icon icon-share-alt ">
-                </i> <span class="text">Logout</span></a></li>
+        <li class="">
+            <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="icon icon-share-alt "></i>
+                <span class="text">Logout</span>
+            </a>
+            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                @csrf
+                @method('POST')
+            </form>
+        </li>
     </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -122,12 +130,60 @@
             <li class=""><a href="/admin/about/about"><i class="icon icon-home"></i> <span>add About</span></a>
             </li>
         </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>rating</span></a></li>
+        <ul>
+            <li><a href="/admin/rating/viewRating"><i class="icon icon-home"></i>
+                    <span>View rating</span></a>
+            </li>
+            <li class=""><a href="/admin/rating/rating"><i class="icon icon-home"></i> <span>add rating</span></a>
+            </li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Team</span></a></li>
+        <ul>
+            <li><a href="/admin/team/viewMember"><i class="icon icon-home"></i>
+                    <span>View Member</span></a>
+            </li>
+            <li class=""><a href="/admin/team/addMember"><i class="icon icon-home"></i> <span>add Member</span></a>
+            </li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Personal_Data</span></a></li>
+        <ul>
+            <li><a href="/admin/personal/viewPersonal"><i class="icon icon-home"></i>
+                    <span>View Data</span></a>
+            </li>
+            <li class=""><a href="/admin/personal/personal"><i class="icon icon-home"></i> <span>add Data</span></a>
+            </li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Group company</span></a></li>
+        <ul>
+            <li><a href="/admin/groupComp/viewGroup"><i class="icon icon-home"></i>
+                    <span>View</span></a>
+            </li>
+            <li class=""><a href="/admin/groupComp/group"><i class="icon icon-home"></i> <span>add</span></a>
+            </li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>Settings Footer</span></a></li>
+        <ul>
+            <li><a href="/admin/settings/view"><i class="icon icon-home"></i>
+                    <span>View</span></a>
+            </li>
+            <li class=""><a href="/admin/settings/add"><i class="icon icon-home"></i> <span>add</span></a>
+            </li>
+        </ul>
+        <li class="submenu"><a href=""><i class="icon icon-home"></i> <span>PrivacyTrm</span></a></li>
+        <ul>
+            <li><a href="/admin/privacyTrm/view"><i class="icon icon-home"></i>
+                    <span>View</span></a>
+            </li>
+            <li class=""><a href="/admin/privacyTrm/add"><i class="icon icon-home"></i> <span>add</span></a>
+            </li>
+        </ul>
     </ul>
 </div>
 <!--sidebar-menu-->
 
 <!--main-container-part-->
-<div id="content">
+<div id="content" style="width: 100%; margin: auto; background-color: #2E363F">
     <!--breadcrumbs-->
     <div id="content-header">
         <div id="breadcrumb"><a href="layout.blade.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>AvoCode</a>

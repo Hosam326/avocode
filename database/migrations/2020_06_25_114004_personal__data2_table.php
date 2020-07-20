@@ -13,12 +13,11 @@ class PersonalData2Table extends Migration
      */
     public function up()
     {
-        Schema::create('personal_data2', function (Blueprint $table) {
+        Schema::create('personals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('title');
             $table->String('description');
             $table->String('image');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@
                                 <span class="col-lg-6 col"><i class="fas fa-calendar-alt" aria-hidden="true">
 
                                     </i>{{\Carbon\Carbon::parse($item->created_at)->format('d/m/Y')}}</span>
-                                <a href="{{ route('blog.show', $item->id) }}" class="col-lg-6 col">عرض المزيد</a>
+                                <a href="{{ route('blog.index', $item->id) }}" class="col-lg-6 col">عرض المزيد</a>
 
                             </div>
                         </div>

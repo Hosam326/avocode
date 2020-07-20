@@ -1,7 +1,10 @@
 <div class="responsive">
     <div class="container">
+        @php
+            $setting = \App\Setting::query()->get()->first();
+        @endphp
         <div class="logo">
-            <a href="index.html"><img src="img/header/Logo@2x.png "alt="logo"></a>
+            <a href="index.html"><img src="{{ $setting->image_link }}" alt="logo"></a>
         </div>
         <div class="navbar">
 
@@ -15,7 +18,7 @@
                 <li class="close"><span onclick="Hide()">×</span></li>
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="servieses.html"></a>خدماتنا</li>
-                <li><a href="{{ route('our_works.show') }}"></a>الاعمال</li>
+                <li><a href=""></a>الاعمال</li>
                 <li><a href="about-as.htm"></a>من نحن</li>
                 <li><a href="rating.html"></a>اراء العملاء</li>
                 <li><a href="group-company.html"></a>مجموعة أفوكود</li>
@@ -33,9 +36,9 @@
 
 <header class="Navbar-Header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="img/header/Logo@2x.png"
-                                              alt="logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#"><img src="{{$setting->image_link}}" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -51,13 +54,18 @@
                     <a class=" nav-link" href="{{ route('group_company.show') }}">مجموعة أفوكود</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         خدماتنا
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="servieses.html">تصميم داخلي</a>
-                        <a class="dropdown-item" href="servieses.html">تصميم معماري</a>
-                        <a class="dropdown-item" href="servieses.html">تصميم حدائق</a>
+                        @php
+                            $services = \App\Service::all();
+                        @endphp
+                        @foreach($services as $service)
+                            <a class="dropdown-item"
+                               href="{{ route('serviceDetail.show', $service->id) }}">{{ $service->title }}</a>
+                        @endforeach
                     </div>
                 </li>
                 <li class="nav-item">
@@ -73,19 +81,18 @@
                     <a class=" nav-link" href="{{ route('blog.show') }}">المدونة</a>
                 </li>
                 <li class="nav-item">
-                    <a class=" nav-link" href="{{ route('contact.show') }}">اتصل بنا</a>
+                    <a class=" nav-link" href="{{ route('contact.index') }}">اتصل بنا</a>
                 </li>
             </ul>
             <ul class="social-media">
-                <a href=""><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                <a href=""><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a>
+
+                <a href="{{$setting->whatsApp_link}}"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                <a href="{{$setting->facebook_link}}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="{{$setting->twitter_link}}"><i class="fab fa-twitter" aria-hidden="true"></i></a>
 
             </ul>
-            <a href="User-login.html" type="button" class="btn btn-outline-secondary"><i class="fas fa-user" aria-hidden="true"></i> تسجيل دخول</a>
-            <a href="choose-account.html" type="button" class="btn btn-outline-success"><i class="fas fa-user" aria-hidden="true"></i> مستخدم جديد</a>
         </div>
     </nav>
-    <a href=""  class="btn btn-danger">اطلب تصميمك</a>
+    <a href="{{ route('contact.index') }}" class="btn btn-danger">اطلب تصميمك</a>
 
 </header>

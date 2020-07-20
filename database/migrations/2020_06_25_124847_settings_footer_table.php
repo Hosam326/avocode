@@ -13,20 +13,9 @@ class SettingsFooterTable extends Migration
      */
     public function up()
     {
-
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::create('personal_data', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
 
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->String('phone');
             $table->String('address');
             $table->String('icon');
@@ -37,10 +26,19 @@ class SettingsFooterTable extends Migration
             $table->String('snapchat_link');
             $table->String('facebook_link');
             $table->String('in_link');
-
-
-            $table->rememberToken();
+            $table->String('whatsApp_link');
             $table->timestamps();
         });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+
     }
 }

@@ -1,4 +1,52 @@
 @extends('website.layouts.layout')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .rate-area {
+        float: left;
+        border-style: none;
+    }
+
+    .rate-area:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+        clip: rect(0,0,0,0);
+    }
+
+    .rate-area:not(:checked) > label {
+        float: right;
+        width: 1em;
+        padding: 0 .1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 400%;
+        line-height: 1.2;
+        color: lightgrey;
+        text-shadow: 1px 1px #bbb;
+    }
+
+    .rate-area:not(:checked) > label:before { content: '★ '; }
+
+    .rate-area > input:checked ~ label {
+        color: gold;
+        text-shadow: 1px 1px #c60;
+        font-size: 450% !important;
+    }
+
+    .rate-area:not(:checked) > label:hover, .rate-area:not(:checked) > label:hover ~ label { color: gold; }
+
+    .rate-area > input:checked + label:hover, .rate-area > input:checked + label:hover ~ label, .rate-area > input:checked ~ label:hover, .rate-area > input:checked ~ label:hover ~ label, .rate-area > label:hover ~ input:checked ~ label {
+        color: gold;
+        text-shadow: 1px 1px goldenrod;
+    }
+
+    .rate-area > label:active {
+        position: relative;
+        top: 2px;
+        left: 2px;
+    }
+</style>
 
 @section('main-content')
     <main style="background-color: white;">
@@ -11,15 +59,15 @@
                         <p>
                             <i class="far fa-calendar-alt"></i>{{\Carbon\Carbon::parse($blog->created_at)->format('d/m/Y')}}
                         </p>
-                        <h3><i class="far fa-eye"></i> 1500</h3>
+                        <h3><i class="far fa-eye"></i>{{$blog->view_count}}</h3>
 
                         <div class="star-header">
                             <!--================-->
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            @php $rating = $blog_rate @endphp
+                            @for($i = 0; $i < 5; ++$i)
+                                <span class="{{ $rating<=$i ? 'far fa-star' : 'fas fa-star'}}" style="{{ $rating<=$i ? 'color: #A5A6AD' : 'color: #BCED4A'}}"></span>
+                            @endfor
+                            @php $rating--; @endphp
 
                         </div>
                     </div>
@@ -40,9 +88,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9">
-                        <h1>{{ $blog->description }}</h1>
-                        <p>{{ $blog->description }}</p>
-                        <img class="ads-det" src="img/ADS 1.png" alt="">
+                        <p>{!! $blog->description !!}</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            تقييم
+                        </button>
                         <div class="artical-a department">
                             <div class=" card-artical-a-parent">
                                 <div style=" font-size: 20px !important;" class="a-parent"> مواضيع ذات علاقة</div>
@@ -64,31 +113,54 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 artical-a-col-lg">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h1>مواضيع شائعة</h1>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="card-left-artical ">
-                                    <img src="img/ola.png" alt="">
-                                    <a href="detials.html"><h3>فن اختيار شريك الحياة</h3></a>
-                                    <p>الحياة . كيف تستمع بالحياة . كيف تتخلى عن النمطية تعلم أن تحب الحياة . ابحث عما
-                                        يُسعدك الحياة اللغز الذي نبحث عن مكانه، الحياة ذاك ...الشيء البعيد</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-
         </section>
-        <section class="ads" style="">
-            <div class="container">
-                <h1>هل تخطط للدراسة في العطلة الصيفية؟</h1>
-                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                <a type="button" class="btn btn-light">اطلب تصميمك</a>
-            </div>
-        </section>
+        @if($advertising)
+            <section class="ads" style="background-image: url({{$advertising->image_link}});">
+                <div class="container">
+                    <h1>{{$advertising->title}}</h1>
+                    <p>{{$advertising->description}}</p>
+                    <a type="button" class="btn btn-light" href="{{$advertising->link}}">دخول</a>
+                </div>
+            </section>
+        @endif
     </main>
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title fc-header-center">التقييم</h4>
+                </div>
+
+                <!-- Modal body -->
+                <form action="{{ route('rating.store') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $blog->id }}" name="blog_id">
+                    <div class="modal-body">
+                        <label class="control-label">الرسالة</label>
+                        <div class="controls">
+                            <input type="text" name="message" id="message">
+                        </div>
+                    </div>
+                    <ul class="rate-area">
+                        <input type="radio" id="5-star" name="rate" value="5" /><label for="5-star" title="Amazing">5 stars</label>
+                        <input type="radio" id="4-star" name="rate" value="4" /><label for="4-star" title="Good">4 stars</label>
+                        <input type="radio" id="3-star" name="rate" value="3" /><label for="3-star" title="Average">3 stars</label>
+                        <input type="radio" id="2-star" name="rate" value="2" /><label for="2-star" title="Not Good">2 stars</label>
+                        <input type="radio" id="1-star" name="rate" value="1" /><label for="1-star" title="Bad">1 star</label>
+                    </ul>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">إرسال</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
 @endsection

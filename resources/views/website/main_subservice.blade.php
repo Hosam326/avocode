@@ -25,7 +25,7 @@
                 <div class="row">
                     @foreach($related_subServices as $related)
                         <div class="col-lg-3">
-                            <a href="ServisessD.html" class="card-servs-all">
+                            <a href="{{route('subService.show', $related->id)}}" class="card-servs-all">
                                 <div class="serv-img">
                                     <img src="{{ $related->image_link }}" alt="">
                                 </div>
@@ -39,13 +39,14 @@
                 </div>
             </div>
         </section>
-        <section class="ads" style="margin-bottom: 0rem; background-image: url(img/bg.png);">
-            <div class="container">
-                <h1>هل تخطط للدراسة في العطلة الصيفية؟</h1>
-                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                <a type="button" class="btn btn-light">ابدأ الدرس الأول</a>
-
-            </div>
-        </section>
+        @if($advertising)
+            <section class="ads" style="background-image: url({{$advertising->image_link}});">
+                <div class="container">
+                    <h1>{{$advertising->title}}</h1>
+                    <p>{{$advertising->description}}</p>
+                    <a type="button" class="btn btn-light" href="{{$advertising->link}}">دخول</a>
+                </div>
+            </section>
+        @endif
     </main>
 @endsection

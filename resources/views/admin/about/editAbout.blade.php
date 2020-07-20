@@ -21,7 +21,6 @@
                                   enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-
                                 <div class="control-group">
                                     <label class="control-label">title</label>
                                     <div class="controls">

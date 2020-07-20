@@ -41,7 +41,7 @@
 
     <Section class="Servies-avo">
         <div class="container">
-            <a class="Titel" href="http://">الخدمات</a>
+            <div class="Titel">الخدمات</div>
             <div class="row">
                 @foreach($services as $item)
                     <div class="col-lg-4">
@@ -56,7 +56,7 @@
     </Section>
     <section class="Features">
         <div class="container">
-            <a class="Titel" href="http://">بماذا نتميز</a>
+            <div class="Titel">بماذا نتميز</div>
 
             <div class="row">
                 <div class="col-lg-3">
@@ -75,7 +75,7 @@
     </section>
     <section class="how-to">
         <div class="container">
-            <a class="Titel" href="http://">كيف تتطلب مشروعك</a>
+            <div class="Titel">كيف تتطلب مشروعك</div>
             <div class="row">
                 <div class="col-lg-6">
                     <ul>
@@ -112,7 +112,6 @@
             </div>
         </div>
     </section>
-
     @if($advertising)
         <section class="ads" style="background-image: url({{$advertising->image_link}});">
             <div class="container">
@@ -125,7 +124,6 @@
     <section class="blog">
         <div class="container">
             <div class="Titel">المدونة</div>
-
             <div class="row">
                 @foreach($blog as $item)
                     <div class="col-lg-3 col-md-4">
@@ -139,7 +137,7 @@
                                 <span class="col-lg-6 col"><i class="fas fa-calendar-alt" aria-hidden="true">
                                     </i>{{\Carbon\Carbon::parse($item->created_at)->format('d/m/Y')}}</span>
 
-                                <a href="{{ route('blog.show', $item->id) }}" class="col-lg-6 col">عرض المزيد</a>
+                                <a href="{{ route('blog.index', $item->id) }}" class="col-lg-6 col">عرض المزيد</a>
                             </div>
                         </div>
                     </div>

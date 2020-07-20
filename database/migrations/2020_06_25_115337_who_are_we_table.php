@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class WhoAreWeTable extends Migration
+class about extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class WhoAreWeTable extends Migration
      */
     public function up()
     {
-        Schema::create('who_are_we', function (Blueprint $table) {
+        Schema::create('abouts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('title');
             $table->String('description');
             $table->String('image');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

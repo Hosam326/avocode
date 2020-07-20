@@ -13,24 +13,22 @@ class PersonalDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('personal_data', function (Blueprint $table) {
+        Schema::create('people', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('name');
             $table->String('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->String('phone');
-            $table->String('location');
+            $table->String('address');
             $table->date('dob');
-            $table->boolean('gender');
-            $table->integer('address');
+            $table->string('gender');
+            $table->string('degree');
             $table->String('job');
             $table->String('JobTitle');
             $table->String('jobTime');
             $table->integer('salary');
-            $table->integer('yearsExperience');
+            $table->string('yearsExperience');
             $table->String('skills');
             $table->String('CV');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -42,6 +40,6 @@ class PersonalDataTable extends Migration
      */
     public function down()
     {
-        //
+
     }
 }

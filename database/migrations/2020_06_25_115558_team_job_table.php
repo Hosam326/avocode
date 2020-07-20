@@ -13,10 +13,11 @@ class TeamJobTable extends Migration
      */
     public function up()
     {
-        Schema::create('team_job', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('name');
             $table->String('job_name');
+            $table->String('job_title');
             $table->String('image');
             $table->timestamps();
         });

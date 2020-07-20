@@ -13,14 +13,12 @@ class CallUsTable extends Migration
      */
     public function up()
     {
-        Schema::create('call_us', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('name');
             $table->String('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->String('phone');
             $table->String('message');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

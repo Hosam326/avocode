@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,7 @@ Route::group(['prefix' => 'admin'], function () {
         return view('layout');
     })->name('home');
 
-    Route::post('logout', 'Auth\LoginController@logout');
+    Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 
     Route::get('/slider/addSlider', 'SliderController@create');
     Route::post('/slider/addSlider', 'SliderController@store')->name('slider.store');
@@ -102,8 +103,47 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/about/{id}/edit', 'AboutController@edit')->name('about.edit');
     Route::put('/about/{id}/update', 'AboutController@update')->name('about.update');
 
+    Route::get('/rating/rating', 'RatingController@create');
+    Route::post('/rating/rating', 'RatingController@store')->name('rating.store');
+    Route::get('/rating/viewRating', 'RatingController@index')->name('rating.index');
+    Route::delete('/rating/{id}/delete', 'RatingController@destroy')->name('rating.delete');
+    Route::get('/rating/{id}/edit', 'RatingController@edit')->name('rating.edit');
+    Route::put('/rating/{id}/update', 'RatingController@update')->name('rating.update');
 
+    Route::get('/team/addMember', 'TeamController@create');
+    Route::post('/team/addMember', 'TeamController@store')->name('team.store');
+    Route::get('/team/viewMember', 'TeamController@index')->name('team.index');
+    Route::delete('/team/{id}/delete', 'TeamController@destroy')->name('team.delete');
+    Route::get('/team/{id}/edit', 'TeamController@edit')->name('team.edit');
+    Route::put('/team/{id}/update', 'TeamController@update')->name('team.update');
 
+    Route::get('/personal/personal', 'PersonalController@create');
+    Route::post('/personal/personal', 'PersonalController@store')->name('personal.store');
+    Route::get('/personal/viewPersonal', 'PersonalController@index')->name('personal.index');
+    Route::delete('/personal/{id}/delete', 'PersonalController@destroy')->name('personal.delete');
+    Route::get('/personal/{id}/edit', 'PersonalController@edit')->name('personal.edit');
+    Route::put('/personal/{id}/update', 'PersonalController@update')->name('personal.update');
+
+    Route::get('/groupComp/group', 'GroupController@create');
+    Route::post('/groupComp/group', 'GroupController@store')->name('group.store');
+    Route::get('/groupComp/viewGroup', 'GroupController@index')->name('group.index');
+    Route::delete('/groupComp/{id}/delete', 'GroupController@destroy')->name('group.delete');
+    Route::get('/groupComp/{id}/edit', 'GroupController@edit')->name('group.edit');
+    Route::put('/groupComp/{id}/update', 'GroupController@update')->name('group.update');
+
+    Route::get('/settings/add', 'SettingController@create');
+    Route::post('/settings/add', 'SettingController@store')->name('setting.store');
+    Route::get('/settings/view', 'SettingController@index')->name('setting.index');
+    Route::delete('/settings/{id}/delete', 'SettingController@destroy')->name('setting.delete');
+    Route::get('/settings/{id}/edit', 'SettingController@edit')->name('setting.edit');
+    Route::put('/settings/{id}/update', 'SettingController@update')->name('setting.update');
+
+    Route::get('/privacyTrm/add', 'PrivacyController@create');
+    Route::post('/privacyTrm/add', 'PrivacyController@store')->name('privacy.store');
+    Route::get('/privacyTrm/view', 'PrivacyController@index')->name('privacy.index');
+    Route::delete('/privacyTrm/{id}/delete', 'PrivacyController@destroy')->name('privacy.delete');
+    Route::get('/privacyTrm/{id}/edit', 'PrivacyController@edit')->name('privacy.edit');
+    Route::put('/privacyTrm/{id}/update', 'PrivacyController@update')->name('privacy.update');
 });
 
 Route::get('/', 'website\HomeController@index')->name('home');
@@ -114,16 +154,21 @@ Route::get('/project_request/{id}/details', 'website\HomeController@showProjectR
 Route::get('/business/{id}/details', 'website\HomeController@showBusiness')->name('businessDetail.show');
 Route::get('/our_work', 'website\HomeController@our_works')->name('our_works.show');
 Route::get('/advertising/{id}/details', 'website\HomeController@showAdvertising');
-Route::get('/blog/{id}/details', 'website\HomeController@showBlog')->name('blog.show');
+Route::get('/blog/{id}/details', 'website\HomeController@showBlog')->name('blog.index');
 Route::get('/about', 'website\HomeController@about_As')->name('about_As.show');
 Route::get('/group_company', 'website\HomeController@group_company')->name('group_company.show');
-Route::get('/jopApp', 'website\HomeController@jopApp')->name('jopApp.show');
 Route::get('/team', 'website\HomeController@team')->name('team.show');
-Route::get('/contact', 'website\HomeController@contact')->name('contact.show');
 Route::get('/trm', 'website\HomeController@trm')->name('trm.show');
 Route::get('/privacy', 'website\HomeController@privacy')->name('privacy.show');
 Route::get('/rating', 'website\HomeController@rating')->name('rating.show');
 Route::get('/blog', 'website\HomeController@blog')->name('blog.show');
+Route::get('/advertising/{id}/details', 'website\HomeController@showAdvertising');
+Route::get('/jopApp', 'website\HomeController@jopApp')->name('jopApp.show');
+Route::post('/jopApp/create', 'website\HomeController@jopAppStore')->name('jopAppStore');
+Route::get('/contact', 'website\HomeController@contact')->name('contact.index');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
+Route::post('/blog_rate', 'BlogRatingController@store')->name('rating.store');
+//Route::resource('contact', 'ContactController');
 
 
 

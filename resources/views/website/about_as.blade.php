@@ -2,44 +2,46 @@
 
 @section('main-content')
     <main>
-        <section class="about-as-D">
+        @foreach($about as $i => $item)
+            @if($i % 2 == 0)
+                <section class="about-as-D">
+                    <div class="container">
+                        <div class="Titel">من نحن</div>
+                        <div class="row">
+                            <div class="col-lg-6 about-right">
+                                <h1>{{$item->title}}</h1>
+                                <p>{{$item->description}}</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <img src="{{$item->image_link}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @else
+                <section class="about-as-D">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <img src="{{$item->image_link}}" alt="">
+                            </div>
+                            <div class="col-lg-6 about-right">
+                                <h1>{{$item->title}}</h1>
+                                <p>{{$item->description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @endif
+        @endforeach
+            @if($advertising)
+        <section class="ads" style="background-image: url({{$advertising->image_link}});">
             <div class="container">
-                <a class="Titel" href="http://">من نحن</a>
-                <div class="row">
-                    <div class="col-lg-6 about-right">
-                        <h1>ماذا نعمل</h1>
-                        <p>
-                            نؤمن إيماناً راسخاً في الإبداع وخلق أفكار فريدة في عالم التصميم، ونعتبر واحداً من أهم شركات التصميم العاملة في دبي. أفوكود للتصميم الداخلي متخصصة في تقديم خدمات التصميم الداخلي المذهلة والعالية الجودة والتي تشمل مخططات المساحات، التصميم بأنواعه، إدارة المشاريع بنوعيها التجارية والسكنية في منطقة الشرق الأوسط. كما نهدف أيضاً إلى بناء علاقات قوية وجيدة مع عملائنا، فقد أذهلنا منطقة الشرق الأوسط بتصاميمنا وأفكارنا المتميزة. وذلك بخلق مزيج متكامل من الابتكار والإبداع مما يتطلبه العملاء وخبرة مصممينا، هي مهمة صعبة قد نجحنا في انجازها بشكل متكامل. توفر أفوكود حلولاً استثنائية وفريدة من نوعها لمشروعك الخاص. تتكون تصاميمنا من مزيج من الثقافات الشرقية والغربية على حد سواء، بالإضافة إلى الفن المعماري اليوناني، والطراز الإيطالي، والإبداع البريطاني
-                        </p>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="img/about-as/img-about-d.png" alt="">
-                    </div>
-                </div>
+                <h1>{{$advertising->title}}</h1>
+                <p>{{$advertising->description}}</p>
+                <a type="button" class="btn btn-light" href="{{$advertising->link}}">دخول</a>
             </div>
         </section>
-        <section class="about-as-D">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-6">
-                        <img src="img/about-as/BG@2x.png" alt="">
-                    </div>
-                    <div class="col-lg-6 about-right">
-                        <h1>لماذا تختار أفوكود ؟</h1>
-                        <p>
-                            . نؤمن بأن كل عميل لديه ذوق مختلف ومتطلبات خاصة وفريدة من نوعها، وسعياً لدعم هذا التوجه يبذل فريق عمل أفوكود جل جهده لفهم أفكار العميل وإضافة أفضل ما عنده من إبداع وابتكار لتحقيق حلم العميل وجعل مشروعه واقعاً حقيقياً. لدينا أفكار وتصاميم إبداعية لا حصر لها يمكن أن نذهلكم بها، حرصاً من على إرضاء جميع العملاء نعمل على كل مشروع على حدة من بداية التخطيط له وحتى مراحله الأخيرة بشكل احترافي وبجودة عالية لتحقيق أفضل النتائج المرجوة. أنت دائماً موضع ترحيب لمناقشة أفكار مشروعك الخاص وتناول مشروبك المفضل في مكاتبنا.                    </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="ads" style="background-image: url(img/bg.png); margin-bottom: 0; margin-top: 2rem;">
-            <div class="container">
-                <h1>هل تخطط للدراسة في العطلة الصيفية؟</h1>
-                <p>تأتي العطلة الصيفية بعد شهور طويلة من الجد والاجتهاد وبذل الجهد في المذاكرة والمراجعة،</p>
-                <a type="button" class="btn btn-light">ابدأ الدرس الأول</a>
-
-            </div>
-        </section>
+            @endif
     </main>
 @endsection

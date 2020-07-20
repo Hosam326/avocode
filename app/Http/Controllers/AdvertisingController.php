@@ -12,6 +12,10 @@ class AdvertisingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     public function index()
     {
         $advertising = Advertising::all();
@@ -26,7 +30,6 @@ class AdvertisingController extends Controller
     public function create()
     {
         return view('admin.advertising.addAdvertising');
-
     }
 
     /**
@@ -44,8 +47,6 @@ class AdvertisingController extends Controller
             'page_id' => 'required',
             'image' => 'image|required',
         ]);
-//        dd($request->all());
-
         $advertising = new advertising();
         $advertising->title = $request->title;
         $advertising->description = $request->description;
